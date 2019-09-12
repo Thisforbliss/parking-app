@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    redirect to  "drivers_controller.rb/signup"
+    redirect to "/signup"
   end
 
 end
