@@ -4,6 +4,24 @@ class DriversController < ApplicationController
     erb :"drivers/signup.html"
   end
 
+#currently working on the post signup and entering correct params
+
+  post "/signup" do
+    params.each do |label, input|
+    if input.empty?
+      flash[:new_user_error] = "Please fill in #{label}."
+      redirect '/signup'
+    end
+  end
+   user = User.create(username: params["username"], email: params["email"], password: params["password"])
+   session[:user_id] = user.id
+   redirect "/tweets"
+
+   if Helpers.is_logged_in?
+
+   end
+  end
+
   # GET: /drivers
   get "/drivers" do
     erb :"/drivers/index.html"
