@@ -1,5 +1,9 @@
 class DriversController < ApplicationController
 
+  get "/signup" do
+    erb :"drivers/signup.html"
+  end
+
   # GET: /drivers
   get "/drivers" do
     erb :"/drivers/index.html"
