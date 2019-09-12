@@ -13,9 +13,9 @@ class DriversController < ApplicationController
       redirect '/signup'
     end
   end
-   user = User.create(username: params["username"], email: params["email"], password: params["password"])
+   user = Driver.create(username: params["username"], phone_number: params["phone_number"], password: params["password"])
    session[:user_id] = user.id
-   redirect "/tweets"
+   redirect "/contents"
 
    if Helpers.is_logged_in?
 
