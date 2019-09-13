@@ -17,7 +17,6 @@ ActiveRecord::Schema.define(version: 20190911204603) do
     t.string   "car_location"
     t.string   "license_plate"
     t.string   "car_model"
-    t.string   "phone_number"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
@@ -25,7 +24,7 @@ ActiveRecord::Schema.define(version: 20190911204603) do
 
   create_table "drivers", force: :cascade do |t|
     t.string   "username"
-    t.integer  "number"
+    t.string   "phone_number"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

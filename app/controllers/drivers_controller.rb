@@ -12,13 +12,11 @@ class DriversController < ApplicationController
       flash[:new_user_error] = "Please fill in #{label}."
       redirect '/signup'
     end
-  end
-   user = Driver.create(username: params["username"], phone_number: params["phone_number"], password: params["password"])
+    end
+   driver = Driver.create(username: params["username"], number: params["phone_number"], password: params["password"])
    session[:user_id] = user.id
    redirect "/contents"
-
    if Helpers.is_logged_in?
-
    end
   end
 
