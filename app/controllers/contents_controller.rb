@@ -2,6 +2,7 @@ class ContentsController < ApplicationController
 
   # GET: /contents
   get "/contents" do
+    @spot_info = Content.all
     erb :"/contents/index.html"
   end
 

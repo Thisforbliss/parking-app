@@ -14,7 +14,7 @@ class DriversController < ApplicationController
     end
     end
    driver = Driver.create(username: params["username"], phone_number: params["phone_number"], password: params["password"])
-   session[:user_id] = user.id
+   session[:user_id] = driver.id
    redirect "/contents"
    if Helpers.is_logged_in?
    end
