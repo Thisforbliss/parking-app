@@ -20,6 +20,37 @@ class DriversController < ApplicationController
    end
   end
 
+  get '/login' do
+      # if Helpers.is_logged_in?(session)
+      #   redirect to '/contents'
+      #end
+      erb :"drivers/login.html"
+    end
+
+    post '/login' do
+      driver = Driver.find_by(:username => params["username"])
+       if user && user.authenticate(params["password"])
+         session[:user_id] = driver.id
+         redirect to '/contents'
+       else
+         flash[:login_error] = "Incorrect username and/or password. Please try again"
+         redirect to '/login'
+       end
+    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   # GET: /drivers
   get "/drivers" do
     erb :"/drivers/index.html"
