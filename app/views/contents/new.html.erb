@@ -1,1 +1,19 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+So lets get started by filling out new content to help people know what type of car you have, where you parked it as well as the location.<br>
+Wtih this information, we'll put it into a forum so drivers searching the forum could get your info and take your spot when you leave.<br>
+That simple,<br>
+Enjoy 😊<br><br>
+
+<% if Helpers.is_logged_in?(session) %>
+<%= @error %>
+  <form action='/contents' method="post">
+    <strong><label>Where did you park your car?</label></strong>
+    <input type="text" name="location" placeholder="location?"><br>
+    <strong><label>What is your cars license_plate?</label></strong>
+    <input type="text" name="license_plate" placeholder="license_plate?"><br>
+    <strong><label>What is the make and model of your car?</label></strong>
+    <input type="text" name="model" placeholder="model?"><br>
+    <input type="submit" name="submit">
+  </form>
+  <% else %>
+      <h1> Simply Log in to create new content </h1>
+  <% end %>
