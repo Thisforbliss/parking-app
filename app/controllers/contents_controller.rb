@@ -13,8 +13,16 @@ class ContentsController < ApplicationController
 
   # POST: /contents
   post "/contents" do
-    redirect "/contents"
+  user = Helpers.current_user(session)
+  if params["location"].empty? || params["license_plate"].empty? ||  params["model"].empty?
+    flash[:empty_tweet] = "Fill in the Tweet"
+    redirect to '/contents/new'
+  else
+  content = Content.create(:car_location => params[:location], :license_plate => params["license_plate"], :car_model => params["model"], :user_id => driver.id)
+  redirect to '/contents'
   end
+  end
+
 
   # GET: /contents/5
   get "/contents/:id" do
