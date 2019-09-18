@@ -7,11 +7,11 @@
 <form method='POST' action="/contents/<%=@content.id%>">
   <input id='hidden' type='hidden' name="_method" value="patch">
   <strong><label>Where did you park your car?</label></strong>
-  <input type="text" name="location" placeholder="location?"><br>
+  <input type="text" name="location" value= '<%=@content.car_location%>'placeholder="location?"><br>
   <strong><label>What is your car license_plate?</label></strong>
-  <input type="text" name="license_plate" placeholder="license_plate?"><br>
+  <input type="text" name="license_plate" value= '<%=@content.license_plate%>' placeholder="license_plate?"><br>
   <strong><label>What is the make and model of your car?</label></strong>
-  <input type="text" name="model" placeholder="model?"><br><br>
+  <input type="text" name="model" value= '<%=@content.car_model%>' placeholder="model?"><br><br>
   <input type='submit' value='Updated Content'>
-</form>
+  </form>
 <a href "/login"><button>Login<button><br><br>
