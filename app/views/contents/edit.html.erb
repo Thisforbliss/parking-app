@@ -3,14 +3,19 @@
 <% if flash.has?(:empty_tweet)%>
 <%=flash[empty_tweet]%>
 <%end%>
+<strong>This is what you entered previously:<strong><br><br>
+<%=@content.license_plate%><br>
+<%=@content.car_location%><br>
+<%=@content.car_model%><br><br><br>
 
+<strong>Fill In Updated Version<strong><br><br>
 <form method='POST' action="/contents/<%=@content.id%>">
   <input id='hidden' type='hidden' name="_method" value="patch">
-  <strong><label>Where did you park your car?</label></strong>
+  <label>Where did you park your car?</label>
   <input type="text" name="location" value= '<%=@content.car_location%>'placeholder="location?"><br>
-  <strong><label>What is your car license_plate?</label></strong>
+  <label>What is your car license_plate?</label>
   <input type="text" name="license_plate" value= '<%=@content.license_plate%>' placeholder="license_plate?"><br>
-  <strong><label>What is the make and model of your car?</label></strong>
+  <label>What is the make and model of your car?</label>
   <input type="text" name="model" value= '<%=@content.car_model%>' placeholder="model?"><br><br>
   <input type='submit' value='Updated Content'>
   </form>

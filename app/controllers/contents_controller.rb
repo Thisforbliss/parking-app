@@ -45,6 +45,14 @@ class ContentsController < ApplicationController
 
   # PATCH: /contents/5
   patch "/contents/:id" do
+    content = Content.find(params[:id])
+    if params["location"].empty? ||params["license_plate"].empty? || params["model"].empty?
+      flash[:empty_content] = 'Please fill in the blank'
+      redirect to "/contents/#{params[:id]}/edit"
+    end
+    content.update(:location => params["location"], :location => params["license_plate"], :location => params["model"])
+    content.save
+    redirect to "/contents/#{content.id}"
     redirect "/contents/:id"
   end
 
