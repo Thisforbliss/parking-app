@@ -8,13 +8,12 @@ Yesss, we know how much you hate it as much as we do!<br>
 Below are all drivers you can connect with to share spots and if you'll like to add content, click the button at the bottom of the page to get started.<br><br>
 <a href='contents/new'><button>Click here to add a new spot</button><br><br><br>
 
-List Of Available Spots Below:<br><br>
+<strong>List Of Available Spots Below:</strong><br><br>
 
-  <strong><%Content.all.each.with_index(1) do |instance, index|%>
-  <%=index%>)
-  <%=instance.driver.username%>
-  <%=instance.car_location%><br>
-  <%=instance.license_plate%><br>
-  <%=instance.car_model%><br><br><br>
-  <%binding.pry%>
-  <%end%></strong><br><br>
+  <%Content.all.each.with_index(1) do |instance, index|%>
+  <%=index%>)<br>
+  username: <%=instance.driver.username%><br>
+  Location: <%=instance.car_location%><br>
+  License Plate:  <%=instance.license_plate%><br>
+  Car Model:  <%=instance.car_model%><br><br><br>
+  <%end%><br><br>
