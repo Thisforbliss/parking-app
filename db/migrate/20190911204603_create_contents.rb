@@ -4,7 +4,7 @@ class CreateContents < ActiveRecord::Migration
       t.string :car_location
       t.string :license_plate
       t.string :car_model
-      t.integer :user_id
+      t.integer :driver_id
       t.timestamps null: false
     end
   end

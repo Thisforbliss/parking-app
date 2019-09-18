@@ -12,8 +12,9 @@ List Of Available Spots Below:<br><br>
 
   <strong><%Content.all.each.with_index(1) do |instance, index|%>
   <%=index%>)
-
+  <%=instance.driver.username%>
   <%=instance.car_location%><br>
   <%=instance.license_plate%><br>
   <%=instance.car_model%><br><br><br>
+  <%binding.pry%>
   <%end%></strong><br><br>

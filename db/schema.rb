@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20190911204603) do
     t.string   "car_location"
     t.string   "license_plate"
     t.string   "car_model"
-    t.integer  "user_id"
+    t.integer  "driver_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
