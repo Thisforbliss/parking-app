@@ -1,11 +1,17 @@
 <strong>Welcome,
  <!-- I want the user to be greeted by their username -->
- <!-- <%Content.all.each do |instance|%>
- <%= instance.driver.username%>
- <%end%><br> -->
+
 Thank you for signing up for Washington heights Parking APP!</strong><br>
 <br><br>
 This app is a community of drivers who collaborate together to notify each other when we're about to leave a spot so we dont have to aimlessly search for one.<br>
 Yesss, we know how much you hate it as much as we do!<br>
 Below are all drivers you can connect with to share spots and if you'll like to add content, click the button at the bottom of the page to get started.<br>
-<a href='contents/new'><button>Click here to add a new spot</button>
+
+<a href='contents/new'><button>Click here to add a new spot</button><br><br><br>
+
+
+  <strong><%Content.all.each do |instance|%>
+  <%=instance.car_location%><br>
+    <%=instance.license_plate%><br>
+      <%=instance.car_model%>
+  <%end%></strong>

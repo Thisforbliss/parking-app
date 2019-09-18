@@ -18,7 +18,7 @@ class ContentsController < ApplicationController
     flash[:empty_tweet] = "Fill in the Tweet"
     redirect to '/contents/new'
   else
-  content = Content.create(:car_location => params[:location], :license_plate => params["license_plate"], :car_model => params["model"], :user_id => driver.id)
+  content = Content.create(:car_location => params[:location], :license_plate => params["license_plate"], :car_model => params["model"], :user_id => user.id)
   redirect to '/contents'
   end
   end
