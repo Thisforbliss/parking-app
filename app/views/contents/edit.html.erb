@@ -1,1 +1,17 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<strong> Hello <%=@content.driver.username%>, lets update your spot by filling in the blanks below</strong><br><br><br>
+
+<% if flash.has?(:empty_tweet)%>
+<%=flash[empty_tweet]%>
+<%end%>
+
+<form method='POST' action="/contents/<%=@content.id%>">
+  <input id='hidden' type='hidden' name="_method" value="patch">
+  <strong><label>Where did you park your car?</label></strong>
+  <input type="text" name="location" placeholder="location?"><br>
+  <strong><label>What is your car license_plate?</label></strong>
+  <input type="text" name="license_plate" placeholder="license_plate?"><br>
+  <strong><label>What is the make and model of your car?</label></strong>
+  <input type="text" name="model" placeholder="model?"><br><br>
+  <input type='submit' value='Updated Content'>
+</form>
+<a href "/login"><button>Login<button><br><br>

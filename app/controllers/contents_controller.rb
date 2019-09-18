@@ -34,7 +34,7 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     if !Helpers.is_logged_in?(session)
     redirect to '/login'
-    elsif Helpers.current_user(session).id != @content.user_id
+  elsif Helpers.current_user(session).id != @content.driver_id
       flash[:wrong_user_edit] = "You could only edit your own tweets"
       redirect to '/contents'
     else
