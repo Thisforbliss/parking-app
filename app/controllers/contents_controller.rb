@@ -31,7 +31,15 @@ class ContentsController < ApplicationController
 
   # GET: /contents/5/edit
   get "/contents/:id/edit" do
-    erb :"/contents/edit.html"
+    @content = Content.find(params[:id])
+    if !Helpers.is_logged_in?(session)
+    redirect to '/login'
+    elsif Helpers.current_user(session).id != @content.user_id
+      flash[:wrong_user_edit] = "You could only edit your own tweets"
+      redirect to '/contents'
+    else
+      @content = Content.find(params[:id])
+      erb :"/contents/edit.html"
   end
 
   # PATCH: /contents/5
