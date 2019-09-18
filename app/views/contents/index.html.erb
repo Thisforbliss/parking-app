@@ -11,8 +11,9 @@ Below are all drivers you can connect with to share spots and if you'll like to 
 List Of Available Spots Below:<br><br>
 
   <strong><%Content.all.each.with_index(1) do |instance, index|%>
-  <%=index%>:<br>
+  <%=index%>)
+
   <%=instance.car_location%><br>
-    <%=instance.license_plate%><br>
-      <%=instance.car_model%>
-  <%end%></strong>
+  <%=instance.license_plate%><br>
+  <%=instance.car_model%><br><br><br>
+  <%end%></strong><br><br>
