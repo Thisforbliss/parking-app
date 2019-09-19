@@ -21,3 +21,8 @@
   </form>
 <a href "/login"><button>Login<button><br><br>
 <a href "/contents"><button>Available Spots<button><br><br>
+
+  <form method="POST" action="/contents/<%=@content.id%>/delete">
+  <input id="hidden" type="hidden" name="_method" value="DELETE">
+  <input type ="submit" value="Delete Available Spot">
+  </form>
