@@ -30,7 +30,7 @@ class DriversController < ApplicationController
     post '/login' do
       driver = Driver.find_by(:username => params["username"])
        if driver && driver.authenticate(params["password"])
-         session[:user_id] = driver.id
+         session[:driver_id] = driver.id
          redirect to '/contents'
        else
          flash[:login_error] = "Incorrect username and/or password. Please try again"

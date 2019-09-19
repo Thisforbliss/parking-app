@@ -25,17 +25,22 @@ class ContentsController < ApplicationController
 
 
   # GET: /contents/5
-  get "/contents/:id" do
-    erb :"/contents/show.html"
+  get "/contents/:id" do #why does it revert me to the log in page every time I have lines 29-30 open?
+    # if !Helpers.is_logged_in?(session)
+    #   redirect to '/login'
+    # else
+      @content = Content.find(params[:id])
+      erb :"/contents/show.html"
+    #end
   end
 
   # GET: /contents/5/edit
   get "/contents/:id/edit" do
     @content = Content.find(params[:id])
     if !Helpers.is_logged_in?(session)
-    redirect to '/login'
-  elsif Helpers.current_user(session).id != @content.driver_id
-      flash[:wrong_user_edit] = "You could only edit your own tweets"
+      redirect to '/login'
+    elsif Helpers.current_user(session).id != @content.driver_id
+      #flash[:wrong_user_edit] = "You could only edit your own tweets"
       redirect to '/contents'
     else
       @content = Content.find(params[:id])
@@ -56,14 +61,17 @@ class ContentsController < ApplicationController
   end
 
   # DELETE: /contents/5/delete
-  post "/contents/:id/delete" do
+  post '/contents/:id/delete' do
     if !Helpers.is_logged_in?(session)
       redirect to '/login'
     end
     @content = Content.find(params[:id])
-    if Helpers.current_user(session).id == @content.user_id
-      @content.delete
-    end
-      redirect to "/contents"
-    end
+    if Helpers.current_user(session).id == @content.driver_id
+  #flash[:wrong_user] = "You could only delete your own tweets"
+#end
+  @content.delete
   end
+  redirect to '/contents'
+  end
+
+end

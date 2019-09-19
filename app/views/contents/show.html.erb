@@ -1,2 +1,12 @@
-<h1>This is the show page for an individual instance of your model.</h1>
-show
+
+
+<strong>Welcome, would you like to delete this available spot?</strong><br><br>
+
+<%=@content.car_location%><br>
+<%=@content.license_plate%><br>
+<%=@content.car_model%><br><br>
+
+<form method="POST" action="/contents/<%=@content.id%>/delete">
+<input id="hidden" type="hidden" name="_method" value="DELETE">
+<input type ="submit" value="Delete Available Spot">
+</form>
