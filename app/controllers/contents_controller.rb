@@ -52,8 +52,7 @@ class ContentsController < ApplicationController
     end
     content.update(:location => params["location"], :location => params["license_plate"], :location => params["model"])
     content.save
-    redirect to "/contents/#{content.id}"
-    redirect "/contents/:id"
+    redirect to "/contents"
   end
 
   # DELETE: /contents/5/delete
