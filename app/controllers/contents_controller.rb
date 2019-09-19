@@ -50,7 +50,7 @@ class ContentsController < ApplicationController
       flash[:empty_content] = 'Please fill in the blank'
       redirect to "/contents/#{params[:id]}/edit"
     end
-    content.update(:location => params["location"], :location => params["license_plate"], :location => params["model"])
+    content.update(:car_location => params["location"], :license_plate => params["license_plate"], :car_model => params["model"])
     content.save
     redirect to "/contents"
   end
