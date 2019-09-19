@@ -56,7 +56,16 @@ class ContentsController < ApplicationController
   end
 
   # DELETE: /contents/5/delete
-  delete "/contents/:id/delete" do
-    redirect "/contents"
+  post "/contents/:id/delete" do
+    if !Helpers.is_logged_in?(session)
+      redirect to '/login'
+    end
+    @content = Content.find(params[:id])
+    if Helpers.current_user(session).id != @content.user_id
+      flash[:wrong_user] = "You could only delete your own tweets"
+      redirect to '/contents'
+    end
+      @tweet.delete
+      redirect to "/contents"
+    end
   end
-end
