@@ -61,11 +61,9 @@ class ContentsController < ApplicationController
       redirect to '/login'
     end
     @content = Content.find(params[:id])
-    if Helpers.current_user(session).id != @content.user_id
-      flash[:wrong_user] = "You could only delete your own tweets"
-      redirect to '/contents'
+    if Helpers.current_user(session).id == @content.user_id
+      @content.delete
     end
-      @tweet.delete
       redirect to "/contents"
     end
   end
