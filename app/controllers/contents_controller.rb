@@ -37,10 +37,11 @@ class ContentsController < ApplicationController
   # GET: /contents/5/edit
   get "/contents/:id/edit" do
     @content = Content.find(params[:id])
+    #binding.pry
     if !Helpers.is_logged_in?(session)
       redirect to '/login'
     elsif Helpers.current_user(session).id != @content.driver_id
-      #flash[:wrong_user_edit] = "You could only edit your own tweets"
+      flash[:wrong_user_edit] = "You could only edit your own tweets"
       redirect to '/contents'
     else
       @content = Content.find(params[:id])

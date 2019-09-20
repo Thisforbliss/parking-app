@@ -1,6 +1,6 @@
 
 
-<strong>Welcome, would you like to delete this available spot?</strong><br><br>
+<strong><%=@content.driver.username%>, would you like to delete this available spot?</strong><br><br>
 
 <%=@content.car_location%><br>
 <%=@content.license_plate%><br>
@@ -10,3 +10,4 @@
 <input id="hidden" type="hidden" name="_method" value="DELETE">
 <input type ="submit" value="Delete Available Spot">
 </form>
+<a href="/contents"><button>Available Spots</button>
