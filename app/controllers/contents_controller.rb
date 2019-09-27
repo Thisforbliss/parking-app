@@ -62,7 +62,7 @@ class ContentsController < ApplicationController
   end
 
   # DELETE: /contents/5/delete
-  post '/contents/:id/delete' do
+  delete '/contents/:id/delete' do
     if !Helpers.is_logged_in?(session)
       redirect to '/login'
     end
