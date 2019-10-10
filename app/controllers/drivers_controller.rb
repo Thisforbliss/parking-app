@@ -20,11 +20,16 @@ class DriversController < ApplicationController
    end
   end
 
-  get '/login' do
+    get '/login' do
       if Helpers.is_logged_in?(session)
         redirect to '/contents'
       end
       erb :"drivers/login.html"
+    end
+
+    get '/logout' do
+      session.clear
+      redirect to '/signup'
     end
 
     post '/login' do
