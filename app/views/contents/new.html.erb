@@ -3,8 +3,8 @@ Wtih this information, we'll put it into a forum so drivers searching the forum 
 That simple,<br>
 Enjoy 😊<br><br>
 
-<% if Helpers.is_logged_in?(session) %>
-<%= @error %>
+
+
   <form action='/contents' method="post">
     <strong><label>Where did you park your car?</label></strong>
     <input type="text" name="location" placeholder="location?"><br>
@@ -14,7 +14,3 @@ Enjoy 😊<br><br>
     <input type="text" name="model" placeholder="model?"><br>
     <input type="submit" name="submit">
   </form>
-  <!-- <a href="contents/index"><button>back to contents<button> -->
-  <% else %>
-      <h1> Simply Log in to create new content </h1>
-  <% end %>

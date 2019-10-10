@@ -8,14 +8,18 @@ class ContentsController < ApplicationController
 
   # GET: /contents/new
   get "/contents/new" do
-    erb :"/contents/new.html"
+    if Helpers.is_logged_in?(session)
+      erb :"/contents/new.html"
+    else
+      redirect "/login"
+    end
   end
 
   # POST: /contents
   post "/contents" do
   user = Helpers.current_user(session)
   if params["location"].empty? || params["license_plate"].empty? ||  params["model"].empty?
-    flash[:empty_tweet] = "Fill in the Tweet"
+    flash[:empty_space] = "Fill in the space"
     redirect to '/contents/new'
   else
   content = Content.create(:car_location => params[:location], :license_plate => params["license_plate"], :car_model => params["model"], :driver_id => user.id)
@@ -25,7 +29,7 @@ class ContentsController < ApplicationController
 
 
   # GET: /contents/5
-  get "/contents/:id" do #why does it revert me to the log in page every time I have lines 29-30 open?
+  get "/contents/:id" do
     # if !Helpers.is_logged_in?(session)
     #   redirect to '/login'
     # else

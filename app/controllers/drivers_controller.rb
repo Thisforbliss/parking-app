@@ -14,7 +14,7 @@ class DriversController < ApplicationController
     end
     end
    driver = Driver.create(username: params["username"], phone_number: params["phone_number"], password: params["password"])
-   session[:user_id] = driver.id
+   session[:driver_id] = driver.id
    redirect "/contents"
    if Helpers.is_logged_in?
    end
@@ -36,6 +36,7 @@ class DriversController < ApplicationController
       driver = Driver.find_by(:username => params["username"])
        if driver && driver.authenticate(params["password"])
          session[:driver_id] = driver.id
+
          redirect to '/contents'
        else
          flash[:login_error] = "Incorrect username and/or password. Please try again"
