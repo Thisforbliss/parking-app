@@ -30,9 +30,6 @@ class ContentsController < ApplicationController
 
   # GET: /contents/5
   get "/contents/:id" do
-    # if !Helpers.is_logged_in?(session)
-    #   redirect to '/login'
-    # else
       @content = Content.find(params[:id])
       erb :"/contents/show.html"
     #end
@@ -45,7 +42,7 @@ class ContentsController < ApplicationController
     if !Helpers.is_logged_in?(session)
       redirect to '/login'
     elsif Helpers.current_user(session).id != @content.driver_id
-      flash[:wrong_user_edit] = "You could only edit your own tweets"
+      flash[:wrong_user_edit] = "You could only edit your own spot"
       redirect to '/contents'
     else
       @content = Content.find(params[:id])
@@ -72,8 +69,6 @@ class ContentsController < ApplicationController
     end
     @content = Content.find(params[:id])
     if Helpers.current_user(session).id == @content.driver_id
-  #flash[:wrong_user] = "You could only delete your own tweets"
-#end
   @content.delete
   end
   redirect to '/contents'
