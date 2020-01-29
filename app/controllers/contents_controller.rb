@@ -17,14 +17,14 @@ class ContentsController < ApplicationController
 
   # POST: /contents
   post "/contents" do
-  user = Helpers.current_user(session)
-  if params["location"].empty? || params["license_plate"].empty? ||  params["model"].empty?
-    flash[:empty_space] = "Fill in the space"
-    redirect to '/contents/new'
-  else
-  content = Content.create(:car_location => params[:location], :license_plate => params["license_plate"], :car_model => params["model"], :driver_id => user.id)
-  redirect to '/contents'
-  end
+    user = Helpers.current_user(session)
+    if params["location"].empty? || params["license_plate"].empty? ||  params["model"].empty?
+      flash[:empty_space] = "Fill in the space"
+      redirect to '/contents/new'
+    else
+      content = Content.create(:car_location => params[:location], :license_plate => params["license_plate"], :car_model => params["model"], :driver_id => user.id)
+      redirect to '/contents'
+    end
   end
 
 
@@ -32,13 +32,11 @@ class ContentsController < ApplicationController
   get "/contents/:id" do
       @content = Content.find(params[:id])
       erb :"/contents/show.html"
-    #end
   end
 
   # GET: /contents/5/edit
   get "/contents/:id/edit" do
     @content = Content.find(params[:id])
-    #binding.pry
     if !Helpers.is_logged_in?(session)
       redirect to '/login'
     elsif Helpers.current_user(session).id != @content.driver_id
@@ -69,9 +67,9 @@ class ContentsController < ApplicationController
     end
     @content = Content.find(params[:id])
     if Helpers.current_user(session).id == @content.driver_id
-  @content.delete
-  end
-  redirect to '/contents'
+      @content.delete
+    end
+    redirect to '/contents'
   end
 
 end
