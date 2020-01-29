@@ -4,8 +4,6 @@ class DriversController < ApplicationController
     erb :"drivers/signup.html"
   end
 
-#currently working on the post signup and entering correct params
-
   post "/signup" do
     params.each do |label, input|
     if input.empty?
@@ -20,29 +18,28 @@ class DriversController < ApplicationController
    end
   end
 
-    get '/login' do
-      if Helpers.is_logged_in?(session)
-        redirect to '/contents'
-      end
-      erb :"drivers/login.html"
+  get '/login' do
+    if Helpers.is_logged_in?(session)
+      redirect to '/contents'
     end
+    erb :"drivers/login.html"
+  end
 
-    get '/logout' do
-      session.clear
-      redirect to '/signup'
+  get '/logout' do
+    session.clear
+    redirect to '/signup'
+  end
+
+  post '/login' do
+    driver = Driver.find_by(:username => params["username"])
+    if driver && driver.authenticate(params["password"])
+      session[:driver_id] = driver.id
+      redirect to '/contents'
+    else
+      flash[:login_error] = "Incorrect username and/or password. Please try again"
+      redirect to '/login'
     end
-
-    post '/login' do
-      driver = Driver.find_by(:username => params["username"])
-       if driver && driver.authenticate(params["password"])
-         session[:driver_id] = driver.id
-
-         redirect to '/contents'
-       else
-         flash[:login_error] = "Incorrect username and/or password. Please try again"
-         redirect to '/login'
-       end
-    end
+  end
 
 
 
