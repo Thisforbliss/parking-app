@@ -6,14 +6,14 @@ Thank you for signing up for Washington heights Parking APP!</strong><br>
   This app is a community of drivers who collaborate together to notify each other when we're about to leave a spot so we dont have to aimlessly search for one.<br>
 Yesss, we know how much you hate it as much as we do!<br>
 Below are all drivers you can connect with to share spots and if you'll like to add content, click the button at the bottom of the page to get started.<br><br>
-<a href='contents/new'><button>Click here to add a new spot</button><br><br><br>
-<a href='/logout'><button>Logout</button><br><br><br>
+<a href='contents/new'><button>Click here to add a new spot</button></a><br><br><br>
+<a href='/logout'><button>Logout</button></a><br><br><br>
 <strong>List Of Available Spots Below:</strong><br><br>
 
   <%Content.all.each.with_index(1) do |instance, index|%>
   <%=index%>)<br>
   username: <%=instance.driver.username%><br>
-  Location: <%=instance.car_location%><br>
+  Location: <a href='/contents/<%=instance.id%>'><%=instance.car_location%></a><br>
   License Plate:  <%=instance.license_plate%><br>
   Car Model:  <%=instance.car_model%><br>
   Contact Info: <%=instance.driver.phone_number%><br>
