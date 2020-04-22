@@ -8,7 +8,7 @@
 <%=@content.car_location%><br>
 <%=@content.car_model%><br><br><br>
 
-<strong>Fill In Updated Version<strong><br><br>
+<strong>Fill In Updated Version Below<strong><br><br>
 <form method='POST' action="/contents/<%=@content.id%>">
   <input id='hidden' type='hidden' name="_method" value="patch">
   <label>Where did you park your car?</label>
@@ -19,6 +19,6 @@
   <input type="text" name="model" value= '<%=@content.car_model%>' placeholder="model?"><br><br>
   <input type='submit' value='Updated Content'>
   </form>
-<a href= "/login"><button>Login<button><br><br>
-<a href= "/contents"><button>Available Spots<button><br><br>
-<a href= "/contents/<%=@content.id%>"><button>Delete Spot</button><br><br>
+<a href= "/login"><button>Login<button><br>
+<a href= "/contents"><button>Available Spots<button><br>
+<a href= "/contents/<%=@content.id%>"><button>Delete Spot</button><br>
