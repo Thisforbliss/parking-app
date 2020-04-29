@@ -1,8 +1,8 @@
 
-<%= Location Of Car %>
+<strong> Location Of Car</strong>
 
 <%Location.all.each.with_index(1) do |instance, index|%>
+<%#binding.pry%>
 <%=index%>)<br>
-username: <%=instance.driver.username%><br>
-Location: <a href='/locations/<%=instance.id%>'><%=instance.coordinates%></a><br>
-<%end%><br><br><br>
+<li>Location:</li> <%=instance.coordinates%><br>
+<%end%><br><br>

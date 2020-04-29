@@ -15,14 +15,14 @@ get "/locations/new" do
 end
 
 post "/locations" do
-  user = Helpers.current_user(session)
-  if params["location"].empty?
-    flash[:empty_space] = "Fill in the space"
-    redirect to '/locations/new'
-  else
+  # user = Helpers.current_user(session)
+  # if params["location"].empty?
+  #   flash[:empty_space] = "Fill in the space"
+  #   redirect to '/locations/new'
+  # else
     location = Location.create(:coordinates => params[:coordinates])
     redirect '/locations'
-  end
+  # end
 end
 
 get "/locations/:id" do
